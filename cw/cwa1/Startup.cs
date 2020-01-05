@@ -16,6 +16,7 @@ namespace cwa1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,6 +28,7 @@ namespace cwa1
             }
 
             app.UseRouting();
+            // app.UseAuthorization(); we don`t use it this app but in other situations this should be added here
 
             app.UseEndpoints(endpoints =>
             {
@@ -34,6 +36,7 @@ namespace cwa1
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                endpoints.MapRazorPages();
             });
         }
     }
